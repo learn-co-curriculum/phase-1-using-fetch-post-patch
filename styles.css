@@ -1,0 +1,11 @@
+article {
+    border: solid;
+    margin: 5px 0px;
+    box-sizing: border-box;
+    width: 170px; 
+}
+
+form {
+    width: 250px;
+}
+

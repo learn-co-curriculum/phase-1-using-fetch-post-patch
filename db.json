@@ -3,17 +3,20 @@
         {
             "id": 1,
             "name": "Booker",
-            "breed": "Bulldog"
+            "breed": "Bulldog",
+            "age": 2
         },
         {
             "id": 2,
             "name": "Jessie",
-            "breed": "Beagle"
+            "breed": "Beagle",
+            "age": 1
         },
         {
             "id": 3,
             "name": "Yolk",
-            "breed": "Chihuahua"
+            "breed": "Chihuahua",
+            "age": 4
         }
     ]
 }
