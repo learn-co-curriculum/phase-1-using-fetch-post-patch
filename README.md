@@ -13,8 +13,8 @@ continuing.
 
 ## Introduction
 
-In the previous lesson, we learned how to using `fetch` to ask our server for
-data - how to perform a GET request.
+In the previous lesson, we learned how to use `fetch` to ask our server for data
+- how to perform a `GET` request.
 
 In this lesson, we'll tackle the next step in communicating with the server -
 sending data _from_ the Frontend _to_ the Backend.
@@ -32,14 +32,15 @@ In each case, you'll need a way to send that data from the Frontend to the
 Backend to create a brand new entry in your database. That's what the `POST`
 HTTP method is for.
 
-We also send data from the Frontend to the Backend with PATCH, but for different
-reasons. Instead of _creating_ new data, we use PATCH to _update_ existing data.
+We also send data from the Frontend to the Backend with `PATCH`, but for
+different reasons. Instead of _creating_ new data, we use `PATCH` to _update_
+existing data.
 
 Let's say one of our Instagram users wants to update the caption for an image.
-Instagram will need to run a PATCH request to change that information on its
+Instagram will need to run a `PATCH` request to change that information on its
 Backend.
 
-We'll dive into talking about POST first!
+We'll dive into talking about `POST` first!
 
 ## Creating New Data - POST Requests
 
@@ -117,9 +118,9 @@ headers: {
 }
 ```
 
-The `Content-Type` key tells the server the type of content that's being set up
+The `Content-Type` key tells the server the type of content that's being sent up
 from our frontend to our backend. Note that the `Content-Type` key is wrapped in
-quotes, as its format means it's a non-standard key.
+quotes, as its format makes it a non-standard key.
 
 The `Accept` key specifies the type of data the client will be able to
 understand when the server sends back its response.
@@ -170,14 +171,20 @@ the nature of an application itself.
 The manner in which we handle the response is identical to the way we handle a
 response in a `GET` request. We'll need to first parse our response using the
 `.json` method, then pass that parsed data to whatever functions we want to use
-to update our Frontend:
+to update our Frontend.
+
+We also want to add a `.catch` statement, just like we did with a basic `GET`
+request. (Error handling is important - don't forget it!)
 
 ```JavaScript
 fetch('http://localhost:3000/dogs', postObj)
-.then(r => r.json())
-.then(data => {
-    // do something with data
-})
+    .then(r => r.json())
+    .then(data => {
+        // do something with data
+    })
+    .catch(error =>{
+        console.error(error)
+    })
 ```
 
 ## Updating Data - PATCH Requests
@@ -215,7 +222,7 @@ slightly different values.
 ### Method
 
 Perhaps unsuprisingly, the `method` for our `PATCH` config obj will be set to
-`'PATCH'`. This tells our server the our client is sending back a `PATCH`
+`'PATCH'`. This tells our server that our client is sending up a `PATCH`
 request:
 
 ```JavaScript
@@ -229,7 +236,7 @@ The difference between a `PATCH` body and a `POST` body is a little more subtle.
 In a `POST` request, we had to send up _all_ the data about a new entry to our
 Backend.
 
-In a `PATCH` request, we only need to send up data _about the specific fields
+In a `PATCH` request, we only need to send up data about _the specific fields
 that are being updated_.
 
 Let's say `Snurfle`, our dog from our earlier example, has a birthday! Instead
@@ -273,10 +280,13 @@ The format for handling this response is the same as handling responses for both
 
 ```JavaScript
 fetch('http://localhost:3000/dogs/1', patchObj)
-.then(r => r.json())
-.then(data =>{
-    // do something with data
-})
+    .then(r => r.json())
+    .then(data =>{
+        // do something with data
+    })
+    .catch(error =>{
+        console.error(error)
+    })
 ```
 
 ## All Together
@@ -298,10 +308,13 @@ const patchObj = {
 }
 
 fetch('http://localhost:3000/dogs/1', patchObj)
-.then(r => r.json())
-.then(data =>{
-    // do something with data
-})
+    .then(r => r.json())
+    .then(data =>{
+        // do something with data
+    })
+    .catch(error =>{
+        console.error(error)
+    })
 ```
 
 ## Dynamically Setting the URL
@@ -318,9 +331,9 @@ updating, then use string interpolation to add that ID to the URL:
 fetch(`http://localhost:3000/dogs/${id}`, patchObj)
 ```
 
-### A Working Example
+## Conclusion
 
-Let's walk through an example of how we can do this.
-
-There is some code set up already in `patch-example.js` that we're using to render some data to the page.
-
+Congrats! You can now Read existing data from the database with a `GET` request,
+Create new data using a `POST` request, and update existing data with a `PATCH`
+request! There's just one more request we need to discuss before we're able to
+implement full CRUD - `DELETE` requests.
