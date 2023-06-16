@@ -6,24 +6,19 @@
 - Explain how to update data on the backend using PATCH
 - Use forms to initiate data transfer to the server
 
-## Setup
-
-This is a code-along lesson. Please fork and clone this lesson before
-continuing.
-
 ## Introduction
 
 In the previous lesson, we learned how to use `fetch` to ask our server for data
-- how to perform a `GET` request.
+using a `GET` request.
 
 In this lesson, we'll tackle the next step in communicating with the server -
 sending data _from_ the Frontend _to_ the Backend.
 
-There are two key HTTP methods we'll be playing around with in this lesson -
-`POST` and `PATCH`.
+There are two key HTTP methods we'll be learning in this lesson - `POST` and
+`PATCH`.
 
-A POST request is used when we want to add entirely new data to our database (in
-this case, our `db.json` file).
+A `POST` request is used when we want to add entirely new data to our database
+(in this case, our `db.json` file).
 
 Imagine that you're YouTube, and you need to allow users to post new videos. Or,
 imagine you're Instagram, and your users want to post new pictures.
@@ -58,9 +53,9 @@ we're POSTing, and the actual information we want to POST.
 In order to do this, we need to pass fetch a second argument - an object
 containing all that information.
 
-Here's what that object will look like. We've included a second example object
-containing data we want added to our server (let's imagine we have a dog-walking
-application and are entering a new dog in our database).
+Here's what that object will look like. We've also included a second example
+object containing data we want added to our server (let's imagine we have a
+dog-walking application and are entering a new dog in our database).
 
 ```JavaScript
 const newDog = {
@@ -87,7 +82,7 @@ our server, and the `postObj` object represents the object that we'll pass to
 fetch('http://localhost:3000/dogs', postObj)
 ```
 
-Let's break down the different pieces of our POST Object
+Let's break down the different pieces of our `POST` object.
 
 ## The POST Object
 
@@ -97,9 +92,10 @@ You'll notice that our postObj has three keys - `method`, `headers`, and `body`.
 
 The `method` key references the HTTP method that we're using in the request. Our
 Backend will look at this HTTP method to determine what it should do with the
-data that's being sent up from the Frontend. By using the `POST` HTTP header,
-we're telling our backend that we want it to create a new piece of data in our
-database.
+data that's being sent up from the Frontend.
+
+By using the `POST` HTTP header, we're telling our backend that we want it to
+create a new piece of data in our database.
 
 ```JavaScript
 method: 'POST' // tells our server how to handling the incoming request
@@ -194,7 +190,8 @@ requests, we pass `fetch` two arguments when making a `PATCH` request - the
 appropriate URL and the configuration obj that we'll use to send data from the
 Frontend to the Backend.
 
-However, there are a few subtle differences between the two. Let's explore!
+However, there are a few subtle differences between `POST` and `PATCH`. Let's
+explore!
 
 ## The PATCH URL
 
@@ -207,10 +204,8 @@ updating a piece of _existing_ data, we have to point our Backend toward the
 specific piece of data we want to update.
 
 We do this by including the ID of a specific resource in the URL of our `fetch`
-request: `'http://localhost:3000/dogs/1'`.
-
-This tells our Backend to look within the `dogs` resource for the data entry
-that has an ID of `1`.
+request: `'http://localhost:3000/dogs/1'`. This tells our Backend to look within
+the `dogs` resource for the data entry that has an ID of `1`.
 
 ## The PATCH Config Object
 
@@ -334,6 +329,6 @@ fetch(`http://localhost:3000/dogs/${id}`, patchObj)
 ## Conclusion
 
 Congrats! You can now Read existing data from the database with a `GET` request,
-Create new data using a `POST` request, and update existing data with a `PATCH`
+Create new data using a `POST` request, and Update existing data with a `PATCH`
 request! There's just one more request we need to discuss before we're able to
 implement full CRUD - `DELETE` requests.
