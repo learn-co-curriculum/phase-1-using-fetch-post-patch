@@ -331,3 +331,7 @@ Congrats! You can now Read existing data from the database with a `GET` request,
 Create new data using a `POST` request, and Update existing data with a `PATCH`
 request! There's just one more request we need to discuss before we're able to
 implement full CRUD - `DELETE` requests.
+
+## Resources
+
+[MDN fetch Docs](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
