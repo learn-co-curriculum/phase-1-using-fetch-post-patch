@@ -4,7 +4,6 @@
 
 - Explain how to add new data to a backend using POST
 - Explain how to update data on the backend using PATCH
-- Use forms to initiate data transfer to the server
 
 ## Introduction
 
